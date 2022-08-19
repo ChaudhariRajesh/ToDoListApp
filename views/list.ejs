@@ -1,0 +1,23 @@
+<%- include("header"); -%>
+<div class="box" id="heading">
+  <h1><%=day%></h1>
+</div>
+
+<div class="box">
+  <% for(var i=0; i<itemsList.length; i++) {%>
+  <form action="/delete" method="post">
+    <div class="item">
+      <input type="checkbox" name="checkbox" value="<%=itemsList[i]._id%>" onChange="this.form.submit()">
+      <p> <%=itemsList[i].item %> </p>
+    </div>
+    <input type="hidden" name="hiddenListName" value="<%=day%>"></input>
+  </form>
+  <% } %>
+
+  <form class="item" action="/" method="post">
+    <input type="text" name="listItemInput" placeholder="Enter the ToDo" autocomplete="off">
+    <button type="submit" name="addToDoButton" value="<%=day%>">+</button>
+  </form>
+</div>
+
+<%- include("footer"); -%>
